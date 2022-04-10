@@ -6,15 +6,16 @@ Module Module1
 
     Sub Main()
 
+        Dim data As String = Now.ToString("dd-MM-yyyy HHmmss")
         Dim WebClient As New Net.WebClient
         Dim Pagina As String
         Pagina = WebClient.DownloadString("https://www.google.com/")
 
-        baixaInfo(Pagina)
+        baixaInfo(Pagina, data)
 
     End Sub
 
-    Public Sub baixaInfo(ByVal pagina As String)
+    Public Sub baixaInfo(ByVal pagina As String, ByVal data As String)
 
         Dim diretorio As String = "C:\baixaPaginaWeb\Google\"
         Dim nomeDiretorio As String = "HTML\"
@@ -25,7 +26,7 @@ Module Module1
             Directory.CreateDirectory(diretorio)
         End If
 
-        Dim fileName As String = "Pagina.html"
+        Dim fileName As String = data & "-Pagina.html"
 
         diretorio = diretorio & fileName
 
